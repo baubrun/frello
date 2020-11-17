@@ -6,12 +6,12 @@ import { useAppState } from "../context/AppStateContext";
 import { ADD_TASK, COLUMN, MOVE_LIST } from "../reducer/actionTypes";
 import useDragItem from "../customHooks/useDragItem";
 import { useDrop } from "react-dnd";
-import { isHidden } from "../utils";
+// import { isHidden } from "../utils";
 
-const Column = ({ text, id, index, isPreview }) => {
+const Column = ({ id, index, text,}) => {
   const { state, dispatch } = useAppState();
   const ref = useRef();
-  const [collectedProps, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: COLUMN,
     hover(item) {
       const dragIdx = item.index;
@@ -38,13 +38,11 @@ const Column = ({ text, id, index, isPreview }) => {
 
   return (
     <ColumnContainer
-      isPreview={isPreview}
-      isHidden={() =>isHidden(isPreview, state.draggedItem, COLUMN, id)}
       ref={ref}
     >
       <ColumnTitle>{text}</ColumnTitle>
-      {state.lists[index].tasks.map((task) => (
-        <Card key={task.id} text={task.text} />
+      {state.lists[index].tasks.map((task, idx) => (
+        <Card id={id} index={idx} key={task.id} text={task.text} />
       ))}
       <AddNewItem
         dark={true}

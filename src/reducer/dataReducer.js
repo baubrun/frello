@@ -4,6 +4,7 @@ import {
   ADD_LIST,
   ADD_TASK,
   MOVE_LIST,
+  MOVE_TASK,
   SET_DRAGGED_ITEM,
 } from "../reducer/actionTypes";
 
@@ -38,6 +39,22 @@ export const dataReducer = (state, action) => {
       return {
         ...state,
       };
+    }
+    case MOVE_TASK: {
+      const {
+        dragIdx,
+        hoverIdx,
+        sourceColumn,
+        targetColumn,
+      } = action.payload
+
+      const sourceIdx = findByIndex(state.lists, sourceColumn)
+      const targetIdx = findByIndex(state.lists, targetColumn)
+      const item = state.lists[sourceIdx].tasks.splice(dragIdx, 1)[0]
+      state.lists[targetIdx].tasks.splice(hoverIdx, 0, item)
+      return {
+        ...state
+      }
     }
     case SET_DRAGGED_ITEM: {
       return {

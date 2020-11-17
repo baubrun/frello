@@ -14,7 +14,11 @@ const App = () => {
       <AppContainer>
         <CustomDragLayer />
         {state.lists.map((list, idx) => (
-          <Column id={list.id} index={idx} key={list.id} text={list.text}   />
+          <Column 
+          id={list.id} 
+          index={idx}
+          key={list.id} 
+          text={list.text}   />
         ))}
         <AddNewItem
         onAdd={text => dispatch({

@@ -40,12 +40,10 @@ padding: 8px 16px;
 
 export const DragPreviewContainer = styled.div `
 opacity: ${props => props.isHidden ? 0 : 1}
-transform: ${props => (props.isPreview ? "rotate(5deg)": undefined)}
 `
 
-// export const ColumnContainer = styled.div`
-export const ColumnContainer = styled(DragPreviewContainer)
-`
+// export const ColumnContainer = styled(DragPreviewContainer)
+export const ColumnContainer = styled.div`
 background-color: #ebecf0;
 border-radius: 3px;
 flex-grow: 0;

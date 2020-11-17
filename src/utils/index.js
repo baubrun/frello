@@ -9,11 +9,3 @@ export const moveItem = (list, from, to) => {
   return list;
 };
 
-export const isHidden = (isPreview, draggedItem, itemType, id) => {
-  return (
-    !isPreview && 
-    draggedItem &&
-    draggedItem.type === itemType && 
-    draggedItem.id === id
-  )
-};
