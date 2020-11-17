@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-export const AddItemButton = styled.button`
+export const AddItemButton = styled.button `
 background-color: #fffff3d;
 border: none;
 border-radius: 3px;
@@ -17,7 +17,7 @@ width: 100%;
 }
 `
 
-export const AppContainer = styled.div`
+export const AppContainer = styled.div `
 
 align-items: flex-start;
 background-color: #3179ba;
@@ -28,7 +28,7 @@ padding: 20px;
 width: 100%;
 `
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div `
 background-color: #fff;
 border-radius: 3px;
 box-shadow: #091e4240 0px 1px 0px 0px;
@@ -38,9 +38,14 @@ max-width: 300px;
 padding: 8px 16px;
 `
 
+export const DragPreviewContainer = styled.div `
+opacity: ${props => props.isHidden ? 0 : 1}
+transform: ${props => (props.isPreview ? "rotate(5deg)": undefined)}
+`
 
-
-export const ColumnContainer = styled.div`
+// export const ColumnContainer = styled.div`
+export const ColumnContainer = styled(DragPreviewContainer)
+`
 background-color: #ebecf0;
 border-radius: 3px;
 flex-grow: 0;
@@ -50,12 +55,21 @@ padding: 8px 8px;
 width: 300px;
 `
 
-export const ColumnTitle = styled.div`
+export const ColumnTitle = styled.div `
 padding: 6px 16px 12px;
 font-weight: bold;
 `
+export const CustomDragLayerContainer = styled.div `
+height: 100%;
+left: 0;
+pointer-events: none;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 100;
+`
 
-export const NewItemButton = styled.button`
+export const NewItemButton = styled.button `
 background-color: #5aac44;
 border: none;
 border-radius: 3px;
@@ -65,7 +79,7 @@ padding: 6px 12px;
 text-align: center
 `
 
-export const NewItemInput = styled.input`
+export const NewItemInput = styled.input `
 border: none;
 border-radius: 3px;
 box-shadow: #091e4240 0px 1px 0px 0px;
@@ -74,5 +88,5 @@ padding: 8px 16px;
 width: 100%;
 `
 
-export const NewItemFormContainer = styled.div`
+export const NewItemFormContainer = styled.div `
 `

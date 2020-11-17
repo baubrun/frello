@@ -1,15 +1,47 @@
-import React from "react";
-import { ColumnContainer, ColumnTitle } from "../styles";
+import React, { useRef } from "react";
+import { ColumnContainer, ColumnTitle } from "../styledComponents";
 import AddNewItem from "./AddNewItem";
 import Card from "../components/Card";
 import { useAppState } from "../context/AppStateContext";
-import { ADD_TASK } from "../reducer/actionTypes";
+import { ADD_TASK, COLUMN, MOVE_LIST } from "../reducer/actionTypes";
+import useDragItem from "../customHooks/useDragItem";
+import { useDrop } from "react-dnd";
+import { isHidden } from "../utils";
 
-const Column = ({ text, id, index }) => {
+const Column = ({ text, id, index, isPreview }) => {
   const { state, dispatch } = useAppState();
+  const ref = useRef();
+  const [collectedProps, drop] = useDrop({
+    accept: COLUMN,
+    hover(item) {
+      const dragIdx = item.index;
+      const hoverIdx = index;
+      if (dragIdx === hoverIdx) {
+        return;
+      }
+      dispatch({
+        type: MOVE_LIST,
+        payload: { dragIdx, hoverIdx },
+      });
+      item.index = hoverIdx;
+    },
+  });
+
+  const { drag } = useDragItem({
+    type: COLUMN,
+    id,
+    index,
+    text,
+  });
+
+  drag(drop(ref));
 
   return (
-    <ColumnContainer>
+    <ColumnContainer
+      isPreview={isPreview}
+      isHidden={() =>isHidden(isPreview, state.draggedItem, COLUMN, id)}
+      ref={ref}
+    >
       <ColumnTitle>{text}</ColumnTitle>
       {state.lists[index].tasks.map((task) => (
         <Card key={task.id} text={task.text} />

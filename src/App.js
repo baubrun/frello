@@ -1,10 +1,10 @@
 import React from "react";
-import { AppContainer } from "./styles";
+import { AppContainer } from "./styledComponents";
 import Column from "./components/Column";
 import AddNewItem from "./components/AddNewItem";
 import {useAppState} from "./context/AppStateContext"
 import {ADD_LIST} from "./reducer/actionTypes"
-
+import CustomDragLayer from "./components/CustomDragLayer"
 
 
 const App = () => {
@@ -12,6 +12,7 @@ const App = () => {
 
   return (
       <AppContainer>
+        <CustomDragLayer />
         {state.lists.map((list, idx) => (
           <Column id={list.id} index={idx} key={list.id} text={list.text}   />
         ))}

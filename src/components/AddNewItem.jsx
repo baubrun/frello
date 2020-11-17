@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AddItemButton } from "../styles";
+import { AddItemButton } from "../styledComponents";
 import NewItemForm from "./NewItemForm";
 
 
