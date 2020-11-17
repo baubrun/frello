@@ -15,7 +15,6 @@ const Card = ({ id, index, text }) => {
       if (item.id === id) {
         return;
       }
-      console.log('item :>> ', item);
       const dragIdx = item.index;
       const hoverIdx = index;
       const sourceColumn = item.id;

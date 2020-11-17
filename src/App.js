@@ -11,7 +11,9 @@ const App = () => {
   const {state, dispatch} = useAppState()
 
   return (
-      <AppContainer>
+    <>
+        <div className="title">Frello -  A Trello clone</div>
+        <AppContainer>
         <CustomDragLayer />
         {state.lists.map((list, idx) => (
           <Column 
@@ -29,6 +31,7 @@ const App = () => {
 
         />
       </AppContainer>
+      </>
   );
 };
 

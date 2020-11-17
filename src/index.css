@@ -28,3 +28,15 @@ body,
 #root {
   height: 100%
 }
+
+
+.title {
+  background-color: #3179ba;
+  color: white;
+  display: flex;
+  font-size: 32px;
+  font-weight: 900;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 100%
+}

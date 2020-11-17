@@ -4,7 +4,7 @@ import NewItemForm from "./NewItemForm";
 
 
 
-const AddNewItem = ({onAdd, dark, toggleButtonText }) => {
+const AddNewItem = ({onAdd, toggleButtonText }) => {
   const [showForm, setShowForm] = useState(false);
 
   if (showForm) {
@@ -20,7 +20,7 @@ const AddNewItem = ({onAdd, dark, toggleButtonText }) => {
 
   return (
     <AddItemButton 
-    dark={dark}
+    dark={true}
     onClick={() => setShowForm(true)}
     >
       {toggleButtonText}

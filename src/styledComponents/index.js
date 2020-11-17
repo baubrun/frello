@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 export const AddItemButton = styled.button `
 background-color: #fffff3d;
 border: none;
@@ -23,6 +22,7 @@ align-items: flex-start;
 background-color: #3179ba;
 display: flex;
 flex-direction: row;
+flex-wrap: wrap;
 height: 100%;
 padding: 20px;
 width: 100%;
@@ -38,11 +38,6 @@ max-width: 300px;
 padding: 8px 16px;
 `
 
-export const DragPreviewContainer = styled.div `
-opacity: ${props => props.isHidden ? 0 : 1}
-`
-
-// export const ColumnContainer = styled(DragPreviewContainer)
 export const ColumnContainer = styled.div`
 background-color: #ebecf0;
 border-radius: 3px;
