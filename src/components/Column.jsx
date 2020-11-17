@@ -1,13 +1,13 @@
-import React , {useContext}from "react";
+import React from "react";
 import { ColumnContainer, ColumnTitle } from "../styles";
 import AddNewItem from "./AddNewItem";
-import {DataContext} from "../context/DataContext"
 import Card from "../components/Card";
+import {useAppState} from "../context/AppStateContext"
 
 
 
 const Column = ({ title, index }) => {
-    const list = useContext(DataContext)[0]
+  const {state: list} = useAppState()
 
   return (
     <ColumnContainer>

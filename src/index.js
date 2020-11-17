@@ -1,19 +1,26 @@
-import React, { useReducer } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { DataContext } from "./context/DataContext";
-import { appData } from "./data";
-import { dataReducer } from "./context/dataReducer";
 
-
+import {AppStateProvider} from "./context/AppStateContext"
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataContext.Provider value={[appData, dataReducer]}>
+    <AppStateProvider>
       <App />
-    </DataContext.Provider>
+    </AppStateProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <AppStateContext.Provider value={[appData, dataReducer]}>
+//       <App />
+//     </AppStateContext.Provider>
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );

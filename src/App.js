@@ -2,11 +2,10 @@ import React, { useContext, } from "react";
 import { AppContainer } from "./styles";
 import Column from "./components/Column";
 import AddNewItem from "./components/AddNewItem";
-import { DataContext } from "./context/DataContext";
+import {useAppState} from "./context/AppStateContext"
 
 const App = () => {
-  const list = useContext(DataContext)[0]
-
+  const {state: list} = useAppState()
 
   return (
       <AppContainer>
