@@ -4,9 +4,8 @@ import NewItemForm from "./NewItemForm";
 
 
 
-const AddNewItem = (props) => {
+const AddNewItem = ({onAdd, dark, toggleButtonText }) => {
   const [showForm, setShowForm] = useState(false);
-  const { onAdd, toggleButtonText } = props;
 
   if (showForm) {
     return (
@@ -21,7 +20,7 @@ const AddNewItem = (props) => {
 
   return (
     <AddItemButton 
-    dark={true} 
+    dark={dark}
     onClick={() => setShowForm(true)}
     >
       {toggleButtonText}

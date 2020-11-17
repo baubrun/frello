@@ -15,18 +15,19 @@ const Card = ({ id, index, text }) => {
       if (item.id === id) {
         return;
       }
-      const dragIdex = item.index;
+      console.log('item :>> ', item);
+      const dragIdx = item.index;
       const hoverIdx = index;
       const sourceColumn = item.id;
       const targetColumn = id;
       dispatch({
           type: MOVE_TASK,
           payload: {
-            dragIdex, hoverIdx, sourceColumn, targetColumn
+            dragIdx, hoverIdx, sourceColumn, targetColumn
           }
       });
       item.index = hoverIdx
-      item.columnId = targetColumn
+      item.id = targetColumn
     },
   });
 
@@ -40,14 +41,8 @@ const Card = ({ id, index, text }) => {
 
   drag(drop(ref))
 
-  return <CardContainer ref={ref}>{text}</CardContainer>;
-//   return <CardContainer>{text}</CardContainer>;
+  return <CardContainer ref={ref} >{text}</CardContainer>;
 };
 
 export default Card;
 
-// const Card = ({text}) => {
-//     return <CardContainer>{text}</CardContainer>
-// }
-
-// export default Card
