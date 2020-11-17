@@ -3,7 +3,7 @@ import { AppContainer } from "./styles";
 import Column from "./components/Column";
 import AddNewItem from "./components/AddNewItem";
 import {useAppState} from "./context/AppStateContext"
-import {ADD_LIST} from "./context/dataReducer"
+import {ADD_LIST} from "./reducer/actionTypes"
 
 
 

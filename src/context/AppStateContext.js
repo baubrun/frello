@@ -2,7 +2,7 @@ import {
     createContext, useReducer, useContext
 } from "react"
 import {appData} from "../data"
-import { dataReducer } from "./dataReducer";
+import { dataReducer } from "../reducer/dataReducer";
 
 
 

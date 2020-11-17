@@ -3,7 +3,7 @@ import { ColumnContainer, ColumnTitle } from "../styles";
 import AddNewItem from "./AddNewItem";
 import Card from "../components/Card";
 import { useAppState } from "../context/AppStateContext";
-import { ADD_TASK } from "../context/dataReducer";
+import { ADD_TASK } from "../reducer/actionTypes";
 
 const Column = ({ text, id, index }) => {
   const { state, dispatch } = useAppState();
