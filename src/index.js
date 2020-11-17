@@ -16,11 +16,3 @@ ReactDOM.render(
 );
 
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <AppStateContext.Provider value={[appData, dataReducer]}>
-//       <App />
-//     </AppStateContext.Provider>
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );

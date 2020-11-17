@@ -2,23 +2,31 @@ import React from "react";
 import { ColumnContainer, ColumnTitle } from "../styles";
 import AddNewItem from "./AddNewItem";
 import Card from "../components/Card";
-import {useAppState} from "../context/AppStateContext"
+import { useAppState } from "../context/AppStateContext";
+import { ADD_TASK } from "../context/dataReducer";
 
-
-
-const Column = ({ title, index }) => {
-  const {state: list} = useAppState()
+const Column = ({ text, id, index }) => {
+  const { state, dispatch } = useAppState();
 
   return (
     <ColumnContainer>
-      <ColumnTitle>{title}</ColumnTitle>
-      {list[index].tasks.map((task) => (
+      <ColumnTitle>{text}</ColumnTitle>
+      {state.lists[index].tasks.map((task) => (
         <Card key={task.id} text={task.text} />
       ))}
-      <AddNewItem 
+      <AddNewItem
         dark={true}
-        onAdd={() => {}} 
-        toggleButtonText="+ Add task" />
+        onAdd={(text) => {
+          dispatch({
+            type: ADD_TASK,
+            payload: {
+              text,
+              taskId: id,
+            },
+          });
+        }}
+        toggleButtonText="+ Add task"
+      />
     </ColumnContainer>
   );
 };

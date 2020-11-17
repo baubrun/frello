@@ -1,18 +1,28 @@
-import React, { useContext, } from "react";
+import React from "react";
 import { AppContainer } from "./styles";
 import Column from "./components/Column";
 import AddNewItem from "./components/AddNewItem";
 import {useAppState} from "./context/AppStateContext"
+import {ADD_LIST} from "./context/dataReducer"
+
+
 
 const App = () => {
-  const {state: list} = useAppState()
+  const {state, dispatch} = useAppState()
 
   return (
       <AppContainer>
-        {list.map((list, idx) => (
-          <Column title={list.text} key={list.id} index={idx} />
+        {state.lists.map((list, idx) => (
+          <Column id={list.id} index={idx} key={list.id} text={list.text}   />
         ))}
-        <AddNewItem toggleButtonText="+ Add another list" onAdd={console.log} />
+        <AddNewItem
+        onAdd={text => dispatch({
+          type: ADD_LIST,
+          payload: text,
+        })} 
+        toggleButtonText="+ Add another list" 
+
+        />
       </AppContainer>
   );
 };

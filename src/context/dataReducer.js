@@ -6,13 +6,15 @@ import {
 } from "../utils"
 
 
-const ADD_LIST = "ADD_LIST"
-const ADD_TASK = "ADD_TASK"
+export const ADD_LIST = "ADD_LIST"
+export const ADD_TASK = "ADD_TASK"
 
 
 export const dataReducer = (state, action) => {
     switch (action.type) {
         case ADD_LIST: {
+            console.log('state.lists :>> ', state.lists);
+
             return {
                 ...state,
                 lists: [
@@ -26,10 +28,12 @@ export const dataReducer = (state, action) => {
             }
         }
         case ADD_TASK: {
+
             const listIdx = findByIndex(
                 state.lists,
                 action.payload.taskId
             )
+            // console.log('listIdx :>> ', listIdx);
             state.lists[listIdx].tasks.push({
                 id: uuid(),
                 text: action.payload.text
